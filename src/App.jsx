@@ -6,7 +6,7 @@ function App() {
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
-  const [copy , setcopy] = useState("false")
+  const [copy , setcopy] = useState(false)
 
   const generate = useCallback(() => {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -15,7 +15,7 @@ function App() {
 
     let charPool = letters;
     let fixedSpecials = "";
-    let finalPassword = "";
+    // let finalPassword = "";
 
     if (numberAllowed) {
       charPool += numbers;
@@ -37,6 +37,7 @@ function App() {
     }
 
     const combined = (fixedSpecials + rest).split("");
+
     for (let i = combined.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [combined[i], combined[j]] = [combined[j], combined[i]];
@@ -87,7 +88,7 @@ function App() {
             <input
               type="range"
               value={length}
-              min={4}
+              min={5}
               max={15}
               className="cursor-pointer"
               onChange={(e) => {
